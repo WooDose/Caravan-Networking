@@ -7,6 +7,7 @@ To-Do:
 """
 
 import pprint
+from net import Network
 
 # This is just information, not actually used
 state_definition = {"pid" : "name",
@@ -34,6 +35,8 @@ game_state = {1 : "Player 1",
               "winning_round" : False
               }
 
+
+net = Network()
 
 
 
@@ -86,8 +89,21 @@ def play_card(player, post, card):
                 game_state[player][post][2].append(card)
                 game_state[player][post][1] = calc_post_score(game_state[player][post][2])
                 #pprint.pprint(game_state)
-            
-            
+def send_data(target, post, card):
+    data = str(net.id) + ":" + target + "," + str(post) + "," + card
+
+    reply = net.send(data)
+
+    return reply
+
+@staticmethod
+def parse_data(data):
+    try:
+        d = data.split(":")[1].split(",")
+        return d[0], int(d[1]), d[2]
+
+    except:
+        return "", 0, ""
 
 ## Send initial state to three players
 ## Give player 1 their turn, wait for input while checking for chat.
@@ -114,6 +130,11 @@ while True:
     
     ## Verify if card is playable, else tell player to try another card. This should be defined on client side so it shouldn't happen.
     play_card(target,post,card)
+
+    #Sending data to network
+    tN, pN, cN = parse_data(send_data(target,post,card))
+
+    play_card(tN, pN, cN)
 
     
 
