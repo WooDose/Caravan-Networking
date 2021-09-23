@@ -37,3 +37,9 @@ como Guerra).
 - Permitir elegir un nombre al momento de unirse.
 -Poder manejar varias “mesas” o “salas”. Es decir, soportar juegos concurrentes que puedan
 ocurrir en el servidor.
+
+## Instrucciones para correr el proyecto
+-Descargar el .zip del github
+-Desde terminal acceder a la carpeta que tenga los 3 archivos
+-en terminal correr: python server.py
+-en terminal acceder a: python caravan-main.py (3 terminales pues fue diseñado para ser utilizado solo en la misma red)
