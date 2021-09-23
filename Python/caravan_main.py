@@ -8,6 +8,7 @@ To-Do:
 
 import pprint
 from net import Network
+import sys
 
 # This is just information, not actually used
 state_definition = {"pid" : "name",
@@ -104,11 +105,13 @@ def send_message(msg):
 
 def parse_data(data):
     try:
-        d = data.split(":")[1].split(",")
-        return d[0], int(d[1]), int(d[2])
+        data = data.split("...")
+        d1= data[0].split(":")[1].split(",")
+        d2 = data[1].split(":")[1].split(",")
+        return d1[0], int(d1[1]), int(d1[2]), d2[0], int(d2[1]), int(d2[2])
 
     except:
-        return "", 0, ""
+        return "", 0, "", "", 0, ""
 
 ## Send initial state to three players
 ## Give player 1 their turn, wait for input while checking for chat.
@@ -145,18 +148,28 @@ while True:
             play_card(target,post,card)
 
             #Sending data to network
-            tN, pN, cN = parse_data(send_data(target,post,card))
+            tN1, pN1, cN1, tN2, pN2, cN2 = parse_data(send_data(target,post,card))
 
-            if "player" not in tN:
-                tN = "player" + tN
+            if "player" not in tN1:
+                tN1 = "player" + tN1
 
-            play_card(tN , pN, cN)
+            if "player" not in tN2:
+                tN2 = "player" + tN2
+
+            if tN1 != "" and pN1 != 0 and cN1 != "":
+                play_card(tN1 , pN1, cN1)
+
+            if tN2 != "" and pN2 != 0 and cN2 != "":
+                play_card(tN2 , pN2, cN2)
         
         if opcion == "2":
             msg = input("Ingrese el mensaje:\n")
             
             msg = "From " + usrName + "\n" + msg
             send_message(msg)
+        
+        if opcion == "3":
+            sys.exit()
 
     
 

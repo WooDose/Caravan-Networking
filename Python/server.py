@@ -17,7 +17,7 @@ s.listen(3)
 print("Waiting for a connection")
 
 id = "0"
-player_state = ["1:1,1,1", "2:1,1,1", "3:1,1,1"]
+player_state = ["0:,,", "1:,,", "2:,,"]
 def thread_client(conn):
     global id, game_state
     conn.send(str.encode(id))
@@ -59,8 +59,8 @@ def thread_client(conn):
                 reply2 = player_state[nid2][:]
                 print("Sending: " + reply1 + " --- " + reply2)
 
-            conn.sendall(str.encode(reply1))
-            conn.sendall(str.encode(reply2))
+            conn.sendall(str.encode(reply1 + "..." + reply2))
+            #conn.sendall(str.encode(reply2))
 
 
         except:
