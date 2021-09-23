@@ -96,6 +96,10 @@ def send_data(target, post, card):
 
     return reply
 
+def send_message(msg):
+    msg = "From player" + net.id + "\n" + msg
+
+    res = net.send(msg)
 
 def parse_data(data):
     try:
@@ -109,35 +113,48 @@ def parse_data(data):
 ## Give player 1 their turn, wait for input while checking for chat.
 ## Input form: {input_player, target_player, post, card}
 while True:
-    pprint.pprint(game_state)
-    player_input = input("Player, Target Player, Post, Card (Separated by spaces)\n")
-    #player_input = "1,2,1,5"
-    ##Get input
-    ## Replace with get input from socket
-    player_input = player_input.split(",")
-    player,post,card = player_input[0], player_input[1],player_input[2]
+    menu = True
+    while menu:
+
+        opcion = input("1 para jugar.\n2 para chatear con la sala.\n3 para salir.\n")
+
+        if opcion == "1":
+
+            pprint.pprint(game_state)
+            player_input = input("Player, Target Player, Post, Card (Separated by spaces)\n")
+            #player_input = "1,2,1,5"
+            ##Get input
+            ## Replace with get input from socket
+            player_input = player_input.split(",")
+            player,post,card = player_input[0], player_input[1],player_input[2]
 
 
-    ##Convert card to int if not 'A'
-    card = int(card) if card != 'A' else card
-    post = int(post)
-    target= 'player'+player
-    #print(type(target))
-    
-    player = int(player)
-    #print(target,post)
-    #print(game_state[target][post])
-    
-    ## Verify if card is playable, else tell player to try another card. This should be defined on client side so it shouldn't happen.
-    play_card(target,post,card)
+            ##Convert card to int if not 'A'
+            card = int(card) if card != 'A' else card
+            post = int(post)
+            target= 'player'+player
+            #print(type(target))
+            
+            player = int(player)
+            #print(target,post)
+            #print(game_state[target][post])
+            
+            ## Verify if card is playable, else tell player to try another card. This should be defined on client side so it shouldn't happen.
+            play_card(target,post,card)
 
-    #Sending data to network
-    tN, pN, cN = parse_data(send_data(target,post,card))
+            #Sending data to network
+            tN, pN, cN = parse_data(send_data(target,post,card))
 
-    if "player" not in tN:
-        tN = "player" + tN
+            if "player" not in tN:
+                tN = "player" + tN
 
-    play_card(tN , pN, cN)
+            play_card(tN , pN, cN)
+        
+        if opcion == "2":
+            msg = input("Ingrese el mensaje:\n")
+            msg = "Message: " + msg
+
+            send_data(msg)
 
     
 
