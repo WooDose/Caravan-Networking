@@ -165,7 +165,7 @@ while True:
         if opcion == "2":
             msg = input("Ingrese el mensaje:\n")
             
-            msg = "From " + usrName + "\n" + msg
+            msg = "Message from " + usrName + ": " + msg
             send_message(msg)
         
         if opcion == "3":
