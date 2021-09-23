@@ -120,11 +120,13 @@ while True:
     menu = True
     usrName = input("Ingrese su nombre de usuario: \n")
     while menu:
-
+        
+        print("*//\\//\\//\\//\\//\\//\\//\\//\\//\\  CARAVAN //\\ //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\")
+        print(" ")
         opcion = input("1 para jugar.\n2 para chatear con la sala.\n3 para salir.\n")
 
         if opcion == "1":
-
+            
             pprint.pprint(game_state)
             player_input = input("Player, Target Player, Post, Card (Separated by spaces)\n")
             #player_input = "1,2,1,5"
