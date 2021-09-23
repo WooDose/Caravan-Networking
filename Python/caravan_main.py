@@ -90,17 +90,17 @@ def play_card(player, post, card):
                 game_state[player][post][1] = calc_post_score(game_state[player][post][2])
                 #pprint.pprint(game_state)
 def send_data(target, post, card):
-    data = str(net.id) + ":" + target + "," + str(post) + "," + card
+    data = str(net.id) + ":" + str(target) + "," + str(post) + "," + str(card)
 
     reply = net.send(data)
 
     return reply
 
-@staticmethod
+
 def parse_data(data):
     try:
         d = data.split(":")[1].split(",")
-        return d[0], int(d[1]), d[2]
+        return d[0], int(d[1]), int(d[2])
 
     except:
         return "", 0, ""
@@ -134,7 +134,10 @@ while True:
     #Sending data to network
     tN, pN, cN = parse_data(send_data(target,post,card))
 
-    play_card(tN, pN, cN)
+    if "player" not in tN:
+        tN = "player" + tN
+
+    play_card(tN , pN, cN)
 
     
 
