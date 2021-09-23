@@ -32,16 +32,15 @@ def thread_client(conn):
             data = conn.recv(2048)
             reply = data.decode('utf-8')
 
-            if "Message" in data:
-                print(data)
-
             if not data:
                 conn.send(str.encode("Conexion terminada: No Data"))
                 break
 
 
             else:
+                
                 print("Received: " + reply)
+                #if "From" not in data:
                 l = reply.split(":")
                 pid = int(l[0])
                 player_state[pid] = reply
@@ -62,6 +61,7 @@ def thread_client(conn):
 
             conn.sendall(str.encode(reply1))
             conn.sendall(str.encode(reply2))
+
 
         except:
             break

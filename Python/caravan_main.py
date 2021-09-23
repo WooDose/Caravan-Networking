@@ -92,14 +92,15 @@ def play_card(player, post, card):
 def send_data(target, post, card):
     data = str(net.id) + ":" + str(target) + "," + str(post) + "," + str(card)
 
+
     reply = net.send(data)
 
     return reply
 
 def send_message(msg):
-    msg = "From player" + net.id + "\n" + msg
 
     res = net.send(msg)
+    print(res)
 
 def parse_data(data):
     try:
@@ -114,6 +115,7 @@ def parse_data(data):
 ## Input form: {input_player, target_player, post, card}
 while True:
     menu = True
+    usrName = input("Ingrese su nombre de usuario: \n")
     while menu:
 
         opcion = input("1 para jugar.\n2 para chatear con la sala.\n3 para salir.\n")
@@ -152,9 +154,9 @@ while True:
         
         if opcion == "2":
             msg = input("Ingrese el mensaje:\n")
-            msg = "Message: " + msg
-
-            send_data(msg)
+            
+            msg = "From " + usrName + "\n" + msg
+            send_message(msg)
 
     
 

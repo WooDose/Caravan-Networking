@@ -21,7 +21,10 @@ class Network:
         """
         try:
             self.client.send(str.encode(data))
-            reply = self.client.recv(2048).decode()
-            return reply
+            if "From" not in data:
+                reply = self.client.recv(2048).decode()
+                return reply
+            else:
+                return "Mensaje enviado"
         except socket.error as e:
             return str(e)
