@@ -39,7 +39,7 @@ como Guerra).
 ocurrir en el servidor.
 
 ## Instrucciones para correr el proyecto
--Descargar el .zip del github
--Desde terminal acceder a la carpeta que tenga los 3 archivos
--en terminal correr: python server.py
--en terminal acceder a: python caravan-main.py (3 terminales pues fue diseñado para ser utilizado solo en la misma red)
+- Descargar el .zip del github.
+- Desde terminal acceder a la carpeta que tenga los 3 archivos.
+- En terminal correr: python server.py .
+- En terminal acceder a: python caravan-main.py (3 terminales pues fue diseñado para ser utilizado solo en la misma red) .
