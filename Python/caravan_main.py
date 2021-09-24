@@ -138,6 +138,8 @@ def parse_data(data):
 while True:
     menu = True
     usrName = input("Ingrese su nombre de usuario: \n")
+    player = net.id
+    print("Bienvenido, "  + usrName + ": jugador " + str((int(player) + 1)))
     while menu:
         
         print("*//\\//\\//\\//\\//\\//\\//\\//\\//\\  CARAVAN //\\ //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\")
@@ -159,7 +161,8 @@ while True:
             ##Get input
             ## Replace with get input from socket
             player_input = player_input.split(",")
-            player,post,card = player_input[0], player_input[1],player_input[2]
+            
+            post,card = player_input[0], player_input[1]
 
 
             ##Convert card to int if not 'A'
@@ -190,7 +193,7 @@ while True:
             if tN2 != "" and pN2 != 0 and cN2 != "":
                 play_card(tN2 , pN2, cN2)
         if get_winning_player()[0] == True:
-            msg = "Message from" + usrName + ": " + usrName + "won the game!"
+            msg = "Message from" + usrName + ": " + usrName + " won the game!\n"
             send_message(msg)
         if opcion == "2":
             msg = input("Ingrese el mensaje:\n")
