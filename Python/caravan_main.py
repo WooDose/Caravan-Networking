@@ -157,7 +157,7 @@ while True:
             print("El jugador gana si tiene un valor entre 19 y 25 para ambos puestos.")
             print("  ")
             pprint.pprint(GAME_STATE)
-            player_input = input("Player, Target Player, Post, Card (Separated by spaces)\n")
+            player_input = input("Post, Card (Separated by spaces)\n")
             #player_input = "1,2,1,5"
             ##Get input
             ## Replace with get input from socket
