@@ -140,6 +140,7 @@ while True:
     usrName = input("Ingrese su nombre de usuario: \n")
     player = net.id
     print("Bienvenido, "  + usrName + ": jugador " + str((int(player) + 1)))
+    player = str(player)
     while menu:
         
         print("*//\\//\\//\\//\\//\\//\\//\\//\\//\\  CARAVAN //\\ //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\")
