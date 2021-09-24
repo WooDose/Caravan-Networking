@@ -66,7 +66,7 @@ def calc_post_score(postcards):
     return score
 
 def play_card(player, post, card):
-    if GAME_STATE[player][post][3] is None:
+    if GAME_STATE[player+1][post][3] is None:
         #add card to post    
         ##If it's the second card, determine direction, if it's the first, ignore
         if len(GAME_STATE[player][post][2]) == 2:
