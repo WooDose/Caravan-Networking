@@ -140,7 +140,7 @@ while True:
     usrName = input("Ingrese su nombre de usuario: \n")
     player = net.id
     print("Bienvenido, "  + usrName + ": jugador " + str((int(player) + 1)))
-    player = str(player)
+    
     while menu:
         
         print("*//\\//\\//\\//\\//\\//\\//\\//\\//\\  CARAVAN //\\ //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\")
@@ -169,7 +169,7 @@ while True:
             ##Convert card to int if not 'A'
             card = int(card) if card != 'A' else card
             post = int(post)
-            target= 'player'+player
+            target= 'player'+ str(player)
             #print(type(target))
             
             player = int(player)
