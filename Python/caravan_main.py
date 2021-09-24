@@ -169,7 +169,7 @@ while True:
             ##Convert card to int if not 'A'
             card = int(card) if card != 'A' else card
             post = int(post)
-            target= 'player'+ str(player+1)
+            target= 'player'+ str(int(player)+1)
             #print(type(target))
             
             player = int(player)
