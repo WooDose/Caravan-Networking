@@ -40,24 +40,28 @@ def thread_client(conn):
             else:
                 
                 print("Received: " + reply)
-                #if "From" not in data:
-                l = reply.split(":")
-                pid = int(l[0])
-                player_state[pid] = reply
+                if "Message" not in reply:
+                    l = reply.split(":")
+                    pid = int(l[0])
+                    player_state[pid] = reply
 
-                if pid == 0: 
-                    nid1 = 1
-                    nid2 = 2
-                if pid == 1: 
-                    nid1 = 2
-                    nid2 = 0
-                if pid == 2: 
-                    nid1 = 0
-                    nid2 = 1
+                    if pid == 0: 
+                        nid1 = 1
+                        nid2 = 2
+                    if pid == 1: 
+                        nid1 = 2
+                        nid2 = 0
+                    if pid == 2: 
+                        nid1 = 0
+                        nid2 = 1
 
-                reply1 = player_state[nid1][:]
-                reply2 = player_state[nid2][:]
-                print("Sending: " + reply1 + " --- " + reply2)
+                    reply1 = player_state[nid1][:]
+                    reply2 = player_state[nid2][:]
+                    print("Sending: " + reply1 + " --- " + reply2)
+                
+                else:
+                    reply1 = "0:,,"
+                    reply2 = "0:,,"
 
             conn.sendall(str.encode(reply1 + "..." + reply2))
             #conn.sendall(str.encode(reply2))

@@ -101,7 +101,10 @@ def send_data(target, post, card):
 def send_message(msg):
 
     res = net.send(msg)
-    print(res)
+    if res == "0:,,...0:,,":
+        print("Mensaje Enviado")
+    else:
+        print("Error al mandar mensaje")
 
 def parse_data(data):
     try:
