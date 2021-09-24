@@ -126,7 +126,14 @@ while True:
         opcion = input("1 para jugar.\n2 para chatear con la sala.\n3 para salir.\n")
 
         if opcion == "1":
-            
+            print("Existen 3 jugadores, cada jugador tiene 2 puestos")
+            print("Objetivo: Cada jugador debe de llevar cada puesto a los niveles entre 19 y 25.")
+            print("  ")
+            print("Cada jugador empieza desde 0 en sus puestos y pone una carta por turno sobre cada puesto")
+            print("Las cartas empiezan con la carta “A” que vale 1 y la “10” que vale 10.")
+            print("Una vez que se coloca una carta, solo se pueden colocar cartas mayores si la siguiente es mayor, o menores si la siguiente es menor.")
+            print("El jugador gana si tiene un valor entre 19 y 25 para ambos puestos.")
+            print("  ")
             pprint.pprint(game_state)
             player_input = input("Player, Target Player, Post, Card (Separated by spaces)\n")
             #player_input = "1,2,1,5"
